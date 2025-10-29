@@ -1,2 +1,0 @@
-# synclify
-synclify Description
