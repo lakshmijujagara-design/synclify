@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Synclify — Demo (HTML/CSS/JS)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Synclify — Demo</h1>
+      <p class="subtitle">Connect mock accounts • Predict trends • Best times • Instant AI brief</p>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h2>1. Connect Accounts</h2>
+        <div class="buttons">
+          <button id="connect-inst">Connect Instagram</button>
+          <button id="connect-yt">Connect YouTube</button>
+          <button id="connect-tw">Connect Twitter</button>
+        </div>
+        <div id="connected-list" class="smallbox"></div>
+      </div>
+
+      <div class="card">
+        <h2>2. Ingest / Simulate Metrics</h2>
+        <p>Pick an account then add mock posts/metrics (impressions, likes).</p>
+        <select id="account-select"></select>
+        <div class="ingest-row">
+          <input id="inp-impr" type="number" placeholder="Impressions" value="300">
+          <input id="inp-likes" type="number" placeholder="Likes" value="30">
+          <input id="inp-hour" type="number" placeholder="Hour (0-23)" value="12" min="0" max="23">
+          <button id="btn-ingest">Ingest Metric</button>
+        </div>
+        <div id="metrics-list" class="smallbox"></div>
+      </div>
+
+      <div class="card">
+        <h2>3. Predict Trends & Best Time</h2>
+        <p>Enter keywords to test. Predictions are simulated but use simple logic.</p>
+        <input id="keywords" placeholder="ai, music, coding">
+        <button id="btn-predict">Predict Trends</button>
+        <div id="predict-result" class="smallbox"></div>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card wide">
+        <h2>4. Alerts & AI Briefs</h2>
+        <p>System watches latest metrics and auto-generates a short AI-style brief when performance drops.</p>
+        <div class="row">
+          <label>Drop threshold (% below baseline): </label>
+          <input id="drop-thresh" type="number" value="40" min="5" max="100">%
+        </div>
+        <button id="btn-scan">Scan for Drops Now</button>
+        <div id="alerts" class="smallbox"></div>
+        <div id="briefs" class="smallbox"></div>
+      </div>
+    </section>
+
+    <footer>
+      <small>Local demo • No external APIs • Use for hackathon prototype</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
