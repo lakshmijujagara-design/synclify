@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car24 Keyword AI</title>
+
+  <!-- ✅ Correct single link to Flask static CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <h1>🚗 Car24 Keyword Trend Predictor</h1>
+    <button id="loadData">Show Predictions</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    document.getElementById('loadData').addEventListener('click', () => {
+      fetch('/predict_keywords')
+        .then(res => res.json())
+        .then(data => {
+          let html = "<h2>Top Keywords</h2><ul>";
+          data.top_keywords.forEach(k => {
+            html += `<li>${k.keyword}: ${k.total_searches}</li>`;
+          });
+          html += "</ul><h2>Next Week Prediction</h2><ul>";
+          data.trend.forEach(t => {
+            html += `<li>${t.date}: ${t.predicted_volume.toFixed(0)}</li>`;
+          });
+          html += "</ul>";
+          document.getElementById('output').innerHTML = html;
+        });
+    });
+  </script>
+</body>
+</html>
